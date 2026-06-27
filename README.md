@@ -15,8 +15,8 @@ It is meant as a lightweight bridge for practical patches, commands, and tweaks 
 
 On top of [ddev/ddev-drupal-contrib](https://github.com/ddev/ddev-drupal-contrib), this add-on currently provides:
 
-- Adds `ddev cspell`, which runs Drupal's cspell setup from the web container and supports Yarn PnP.
-- Fixes `phpcbf` behavior with https://github.com/ddev/ddev-drupal-contrib/pull/175, patching it to ignore `.ddev` paths so code style fixes do not rewrite local DDEV config.
+- Adds `ddev cspell`, which runs Drupal's cspell setup from the web container and supports Yarn PnP. See https://github.com/ddev/ddev-drupal-contrib/pull/55
+- Patches `phpcbf` behavior with https://github.com/ddev/ddev-drupal-contrib/pull/175, to ignore `.ddev` paths so code style fixes do not rewrite local DDEV config.
 
 ## Installation
 
