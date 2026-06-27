@@ -7,7 +7,11 @@
 
 ## Overview
 
-This add-on integrates Drupal Contrib Extras into your [DDEV](https://ddev.com/) project.
+This add-on extends [ddev/ddev-drupal-contrib](https://github.com/ddev/ddev-drupal-contrib) with small extras that are useful for Drupal contrib work but are not yet part of the upstream add-on.
+
+It is meant as a lightweight bridge for practical patches, commands, and tweaks while they are being discussed upstream or are too narrow to maintain there.
+
+Current extras include a `phpcbf` patch that ignores `.ddev` paths and a `ddev cspell` command for running Drupal's cspell setup from the web container.
 
 ## Installation
 
@@ -18,31 +22,8 @@ ddev restart
 
 After installation, make sure to commit the `.ddev` directory to version control.
 
-## Usage
-
-| Command | Description |
-| ------- | ----------- |
-| `ddev describe` | View service status and used ports for Drupal Contrib Extras |
-| `ddev logs -s drupal-contrib-extras` | Check Drupal Contrib Extras logs |
-
-## Advanced Customization
-
-To change the Docker image:
-
-```bash
-ddev dotenv set .ddev/.env.drupal-contrib-extras --drupal-contrib-extras-docker-image="ddev/ddev-utilities:latest"
-ddev add-on get hanoii/ddev-drupal-contrib-extras
-ddev restart
-```
-
-Make sure to commit the `.ddev/.env.drupal-contrib-extras` file to version control.
-
-All customization options (use with caution):
-
-| Variable | Flag | Default |
-| -------- | ---- | ------- |
-| `DRUPAL_CONTRIB_EXTRAS_DOCKER_IMAGE` | `--drupal-contrib-extras-docker-image` | `ddev/ddev-utilities:latest` |
-
 ## Credits
+
+[cspell](commands/web/cspell) crafted by [@jameswilson](https://github.com/jameswilson)
 
 **Contributed and maintained by [@hanoii](https://github.com/hanoii)**

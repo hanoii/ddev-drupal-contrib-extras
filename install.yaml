@@ -1,6 +1,23 @@
-name: drupal-contrib-extras
+name: ddev-drupal-contrib-extras
 
 project_files:
-  - docker-compose.drupal-contrib-extras.yaml
+  - commands/
+  - drupal-contrib-extras/
+
+dependencies:
+  - ddev/ddev-drupal-contrib
 
 ddev_version_constraint: '>= v1.24.10'
+
+post_install_actions:
+  - |
+    #ddev-description: Patch ddev/ddev-drupal-contrib phpcbf command
+    #ddev-warning-exit-code: 2
+    PATCH=drupal-contrib-extras/patches/phpcbf-pr175-20260626.patch
+    if patch --forward --force --dry-run --strip=1 < "$PATCH" >/dev/null 2>&1; then
+      patch --forward --force --no-backup-if-mismatch --reject-file=/dev/null --strip=1 < "$PATCH"
+    else
+      echo "phpcbf patch not applied: already applied or not applicable"
+      echo "Update ddev/ddev-drupal-contrib and reinstall this add-on if needed."
+      exit 2
+    fi
